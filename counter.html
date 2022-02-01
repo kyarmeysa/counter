@@ -19,7 +19,7 @@
 
 
     <script>
-        let counter =0;
+        let counter =localStorage.getItem('counter') ? Number(localStorage.getItem('counter')) : 0 ;
         let counterDom = document.querySelector('#counter');
         let increaseDom = document.querySelector('#increase');
         let decreaseDom = document.querySelector('#decrease');
@@ -28,7 +28,10 @@
         increaseDom.addEventListener("click" , TheEvent);
         decreaseDom.addEventListener("click" , TheEvent)
         function TheEvent(){
-            (this.id=="increase") ? counterDom.innerHTML = counter+=1 : counterDom.innerHTML = counter-=1;
+            this.id=="increase" ?   counter+=1 :  counter-=1;
+            localStorage.setItem('counter', counter);
+
+            counterDom.innerHTML= counter;
         
             
         }
